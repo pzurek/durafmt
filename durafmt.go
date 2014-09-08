@@ -20,13 +20,25 @@ func HMS(duration time.Duration) string {
 
 func Words(duration time.Duration) string {
 
+	var d string
 	h, m, s := extractValues(duration)
 
-	hours := fmt.Sprintf("%d", h)
-	minutes := fmt.Sprintf("%d", m)
 	seconds := fmt.Sprintf("%d", s)
+	d = fmt.Sprintf("%s seconds", seconds)
 
-	d := fmt.Sprintf("%s hours %s minutes %s seconds", hours, minutes, seconds)
+	if duration.Minutes() < 1 {
+		return d
+	}
+
+	minutes := fmt.Sprintf("%d", m)
+	d = fmt.Sprintf("%s minutes %s seconds", minutes, seconds)
+
+	if duration.Hours() < 1 {
+		return d
+	}
+
+	hours := fmt.Sprintf("%d", h)
+	d = fmt.Sprintf("%s hours %s minutes %s seconds", hours, minutes, seconds)
 
 	return d
 }
