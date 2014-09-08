@@ -18,6 +18,19 @@ func HMS(duration time.Duration) string {
 	return d
 }
 
+func Words(duration time.Duration) string {
+
+	h, m, s := extractValues(duration)
+
+	hours := fmt.Sprintf("%d", h)
+	minutes := fmt.Sprintf("%d", m)
+	seconds := fmt.Sprintf("%d", s)
+
+	d := fmt.Sprintf("%s hours %s minutes %s seconds", hours, minutes, seconds)
+
+	return d
+}
+
 func extractValues(duration time.Duration) (int64, int64, int64) {
 	var hours, minutes, seconds int64
 	if duration.Hours() < 1 {
