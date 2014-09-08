@@ -20,6 +20,7 @@ func HMS(duration time.Duration) string {
 }
 
 // LongWords function returns duration as a string in format 'X hours Y minutes Z seconds'.
+//
 // Only non-zero values will be taken into account.
 func LongWords(duration time.Duration) string {
 
@@ -47,6 +48,7 @@ func LongWords(duration time.Duration) string {
 }
 
 // ShortWords function returns duration as a string in format 'Xh Ym Zs'.
+//
 // Only non-zero values will be taken into account.
 func ShortWords(duration time.Duration) string {
 
