@@ -7,7 +7,9 @@ import (
 
 var ins = []time.Duration{
 	time.Duration(time.Second * 12),
+	time.Duration(time.Minute * 25),
 	time.Duration(time.Minute*36 + time.Second*45),
+	time.Duration(time.Hour*67 + time.Second*25),
 	time.Duration(time.Hour*42 + time.Minute*42 + time.Second*42),
 }
 
@@ -15,7 +17,9 @@ func TestHMS(t *testing.T) {
 
 	outs := []string{
 		"00:00:12",
+		"00:25:00",
 		"00:36:45",
+		"67:00:25",
 		"42:42:42",
 	}
 
@@ -30,7 +34,9 @@ func TestHMS(t *testing.T) {
 func TestLongWords(t *testing.T) {
 	outs := []string{
 		"12 seconds",
+		"25 minutes 0 seconds",
 		"36 minutes 45 seconds",
+		"67 hours 0 minutes 25 seconds",
 		"42 hours 42 minutes 42 seconds",
 	}
 
@@ -45,7 +51,9 @@ func TestLongWords(t *testing.T) {
 func TestShortWords(t *testing.T) {
 	outs := []string{
 		"12s",
+		"25m 0s",
 		"36m 45s",
+		"67h 0m 25s",
 		"42h 42m 42s",
 	}
 

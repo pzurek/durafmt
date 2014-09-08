@@ -5,6 +5,7 @@ import (
 	"time"
 )
 
+// HMS function returns duration as a string in format 'hh:mm:ss'
 func HMS(duration time.Duration) string {
 
 	h, m, s := extractValues(duration)
@@ -18,6 +19,8 @@ func HMS(duration time.Duration) string {
 	return d
 }
 
+// LongWords function returns duration as a string in format 'X hours Y minutes Z seconds'
+// Only non-zero values will be taken into account
 func LongWords(duration time.Duration) string {
 
 	var d string
@@ -43,6 +46,8 @@ func LongWords(duration time.Duration) string {
 	return d
 }
 
+// ShortWords function returns duration as a string in format 'Xh Ym Zs'
+// Only non-zero values will be taken into account
 func ShortWords(duration time.Duration) string {
 
 	var d string
