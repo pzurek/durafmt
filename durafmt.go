@@ -18,7 +18,7 @@ func HMS(duration time.Duration) string {
 	return d
 }
 
-func Words(duration time.Duration) string {
+func LongWords(duration time.Duration) string {
 
 	var d string
 	h, m, s := extractValues(duration)
@@ -39,6 +39,31 @@ func Words(duration time.Duration) string {
 
 	hours := fmt.Sprintf("%d", h)
 	d = fmt.Sprintf("%s hours %s minutes %s seconds", hours, minutes, seconds)
+
+	return d
+}
+
+func ShortWords(duration time.Duration) string {
+
+	var d string
+	h, m, s := extractValues(duration)
+
+	seconds := fmt.Sprintf("%d", s)
+	d = fmt.Sprintf("%ss", seconds)
+
+	if duration.Minutes() < 1 {
+		return d
+	}
+
+	minutes := fmt.Sprintf("%d", m)
+	d = fmt.Sprintf("%sm %ss", minutes, seconds)
+
+	if duration.Hours() < 1 {
+		return d
+	}
+
+	hours := fmt.Sprintf("%d", h)
+	d = fmt.Sprintf("%sh %sm %ss", hours, minutes, seconds)
 
 	return d
 }
