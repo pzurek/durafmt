@@ -2,6 +2,7 @@ package durafmt
 
 import (
 	"fmt"
+	"strings"
 	"time"
 )
 
@@ -66,6 +67,11 @@ func LongWordsWithSeparator(duration time.Duration, sep string) string {
 
 	hours := fmt.Sprintf("%d", h)
 	d = fmt.Sprintf("%s hours%s %s minutes%s %s seconds", hours, sep, minutes, sep, seconds)
+
+	// Change to signular when it makes sense
+	d = strings.Replace(d, " 1 seconds", " 1 second", -1)
+	d = strings.Replace(d, " 1 minutes", " 1 minute", -1)
+	d = strings.Replace(d, " 1 hours", " 1 hour", -1)
 
 	return d
 }
