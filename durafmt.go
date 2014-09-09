@@ -5,8 +5,26 @@ import (
 	"time"
 )
 
-// HMS function returns duration as a string in format 'hh:mm:ss'.
-func HMS(duration time.Duration) string {
+// HMWithSeparator function returns duration as a string in format 'hh:mm'.
+func HMWithSeparator(duration time.Duration, sep string) string {
+
+	h, m, _ := extractValues(duration)
+
+	hours := fmt.Sprintf("%0.2d", h)
+	minutes := fmt.Sprintf("%0.2d", m)
+
+	d := fmt.Sprintf("%s%s%s", hours, sep, minutes)
+
+	return d
+}
+
+// HM function returns duration as a string in format 'hh:mm'.
+func HM(duration time.Duration) string {
+	return HMWithSeparator(duration, ":")
+}
+
+// HMSWithSeparator function returns duration as a string in format 'hh:mm:ss'.
+func HMSWithSeparator(duration time.Duration, sep string) string {
 
 	h, m, s := extractValues(duration)
 
@@ -14,15 +32,20 @@ func HMS(duration time.Duration) string {
 	minutes := fmt.Sprintf("%0.2d", m)
 	seconds := fmt.Sprintf("%0.2d", s)
 
-	d := fmt.Sprintf("%s:%s:%s", hours, minutes, seconds)
+	d := fmt.Sprintf("%s%s%s%s%s", hours, sep, minutes, sep, seconds)
 
 	return d
 }
 
-// LongWords function returns duration as a string in format 'X hours Y minutes Z seconds'.
+// HMS function returns duration as a string in format 'hh:mm:ss'.
+func HMS(duration time.Duration) string {
+	return HMSWithSeparator(duration, ":")
+}
+
+// LongWordsWithSeparator function returns duration as a string in format 'X hours Y minutes Z seconds'.
 //
 // Only non-zero values will be taken into account.
-func LongWords(duration time.Duration) string {
+func LongWordsWithSeparator(duration time.Duration, sep string) string {
 
 	var d string
 	h, m, s := extractValues(duration)
@@ -35,16 +58,23 @@ func LongWords(duration time.Duration) string {
 	}
 
 	minutes := fmt.Sprintf("%d", m)
-	d = fmt.Sprintf("%s minutes %s seconds", minutes, seconds)
+	d = fmt.Sprintf("%s minutes%s %s seconds", minutes, sep, seconds)
 
 	if duration.Hours() < 1 {
 		return d
 	}
 
 	hours := fmt.Sprintf("%d", h)
-	d = fmt.Sprintf("%s hours %s minutes %s seconds", hours, minutes, seconds)
+	d = fmt.Sprintf("%s hours%s %s minutes%s %s seconds", hours, sep, minutes, sep, seconds)
 
 	return d
+}
+
+// LongWords function returns duration as a string in format 'X hours Y minutes Z seconds'.
+//
+// Only non-zero values will be taken into account.
+func LongWords(duration time.Duration) string {
+	return LongWordsWithSeparator(duration, "")
 }
 
 // ShortWords function returns duration as a string in format 'Xh Ym Zs'.
