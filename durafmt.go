@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-// HMWithSeparator function returns duration as a string in format 'hh:mm'.
+// HMWithSeparator function returns duration as a string in format 'hh:mm' with a user defined separator.
 func HMWithSeparator(duration time.Duration, sep string) string {
 
 	h, m, _ := extractValues(duration)
@@ -23,7 +23,7 @@ func HM(duration time.Duration) string {
 	return HMWithSeparator(duration, ":")
 }
 
-// HMSWithSeparator function returns duration as a string in format 'hh:mm:ss'.
+// HMSWithSeparator function returns duration as a string in format 'hh:mm:ss' with a user defined separator.
 func HMSWithSeparator(duration time.Duration, sep string) string {
 
 	h, m, s := extractValues(duration)
@@ -42,7 +42,7 @@ func HMS(duration time.Duration) string {
 	return HMSWithSeparator(duration, ":")
 }
 
-// LongWordsWithSeparator function returns duration as a string in format 'X hours Y minutes Z seconds'.
+// LongWordsWithSeparator function returns duration as a string in format 'X hours Y minutes Z seconds' with a user defined separator.
 //
 // Only non-zero values will be taken into account.
 func LongWordsWithSeparator(duration time.Duration, sep string) string {
