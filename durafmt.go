@@ -43,10 +43,10 @@ func HMS(duration time.Duration) string {
 	return HMSWithSeparator(duration, ":")
 }
 
-// LongWordsWithSeparator function returns duration as a string in format 'X hours Y minutes Z seconds' with a user defined separator.
+// WordsWithSeparator function returns duration as a string in format 'X hours Y minutes Z seconds' with a user defined separator.
 //
 // Only non-zero values will be taken into account.
-func LongWordsWithSeparator(duration time.Duration, sep string) string {
+func WordsWithSeparator(duration time.Duration, sep string) string {
 
 	var d string
 	h, m, s := extractValues(duration)
@@ -80,17 +80,17 @@ func fixSingular(d string) string {
 	return s
 }
 
-// LongWords function returns duration as a string in format 'X hours Y minutes Z seconds'.
+// Words function returns duration as a string in format 'X hours Y minutes Z seconds'.
 //
 // Only non-zero values will be taken into account.
-func LongWords(duration time.Duration) string {
-	return LongWordsWithSeparator(duration, "")
+func Words(duration time.Duration) string {
+	return WordsWithSeparator(duration, "")
 }
 
-// ShortWords function returns duration as a string in format 'Xh Ym Zs'.
+// Short function returns duration as a string in format 'Xh Ym Zs'.
 //
 // Only non-zero values will be taken into account.
-func ShortWords(duration time.Duration) string {
+func Short(duration time.Duration) string {
 
 	var d string
 	h, m, s := extractValues(duration)

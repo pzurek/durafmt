@@ -100,7 +100,7 @@ func TestHMSWithSeparator(t *testing.T) {
 	}
 }
 
-func TestLongWords(t *testing.T) {
+func TestWords(t *testing.T) {
 	outs := []string{
 		"1 second",
 		"12 seconds",
@@ -113,14 +113,14 @@ func TestLongWords(t *testing.T) {
 	}
 
 	for i, in := range ins {
-		d := LongWords(in)
+		d := Words(in)
 		if d != outs[i] {
 			t.Errorf("got: %s, expected %s", d, outs[i])
 		}
 	}
 }
 
-func TestLongWordsWithSeparator(t *testing.T) {
+func TestWordsWithSeparator(t *testing.T) {
 	outs := []string{
 		"1 second",
 		"12 seconds",
@@ -133,14 +133,14 @@ func TestLongWordsWithSeparator(t *testing.T) {
 	}
 
 	for i, in := range ins {
-		d := LongWordsWithSeparator(in, ",")
+		d := WordsWithSeparator(in, ",")
 		if d != outs[i] {
 			t.Errorf("got: %s, expected %s", d, outs[i])
 		}
 	}
 }
 
-func TestShortWords(t *testing.T) {
+func TestShort(t *testing.T) {
 	outs := []string{
 		"1s",
 		"12s",
@@ -153,7 +153,7 @@ func TestShortWords(t *testing.T) {
 	}
 
 	for i, in := range ins {
-		d := ShortWords(in)
+		d := Short(in)
 		if d != outs[i] {
 			t.Errorf("got: %s, expected %s", d, outs[i])
 		}
