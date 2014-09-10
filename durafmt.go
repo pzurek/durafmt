@@ -55,25 +55,29 @@ func LongWordsWithSeparator(duration time.Duration, sep string) string {
 	d = fmt.Sprintf("%s seconds", seconds)
 
 	if duration.Minutes() < 1 {
-		return d
+		return fixSingular(d)
 	}
 
 	minutes := fmt.Sprintf("%d", m)
 	d = fmt.Sprintf("%s minutes%s %s seconds", minutes, sep, seconds)
 
 	if duration.Hours() < 1 {
-		return d
+		return fixSingular(d)
 	}
 
 	hours := fmt.Sprintf("%d", h)
 	d = fmt.Sprintf("%s hours%s %s minutes%s %s seconds", hours, sep, minutes, sep, seconds)
+	return fixSingular(d)
+}
 
-	// Change to signular when it makes sense
-	d = strings.Replace(d, " 1 seconds", " 1 second", -1)
-	d = strings.Replace(d, " 1 minutes", " 1 minute", -1)
-	d = strings.Replace(d, " 1 hours", " 1 hour", -1)
-
-	return d
+// Replacing all plural forms with signulars where needed
+func fixSingular(d string) string {
+	s := " " + d
+	s = strings.Replace(s, " 1 seconds", " 1 second", -1)
+	s = strings.Replace(s, " 1 minutes", " 1 minute", -1)
+	s = strings.Replace(s, " 1 hours", " 1 hour", -1)
+	s = strings.TrimSpace(s)
+	return s
 }
 
 // LongWords function returns duration as a string in format 'X hours Y minutes Z seconds'.
