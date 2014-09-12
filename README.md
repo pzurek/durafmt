@@ -3,7 +3,7 @@ durafmt
 
 time.Duration formatting for Go
 
-build status:  
+[![Coverage Status](https://coveralls.io/repos/pzurek/durafmt/badge.png)](https://coveralls.io/r/pzurek/durafmt)  
 
 [![wercker status](https://app.wercker.com/status/7c5eccf114d370f551e12d67e0ce6c0e/s "wercker status")](https://app.wercker.com/project/bykey/7c5eccf114d370f551e12d67e0ce6c0e)  
 
