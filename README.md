@@ -11,4 +11,4 @@ time.Duration formatting for Go
 
 [![Build Status](https://drone.io/github.com/pzurek/durafmt/status.png)](https://drone.io/github.com/pzurek/durafmt/latest)  
 
-
+[ ![Codeship Status for pzurek/durafmt](https://codeship.io/projects/c5d15d30-1e80-0132-5001-26ae8067ef5f/status)](https://codeship.io/projects/35543)  
