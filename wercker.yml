@@ -1,1 +1,10 @@
 box: wercker/default
+
+build:
+    # The steps that will be executed on build
+    steps:
+      # Test the project
+      - script:
+          name: test
+          code: |
+            go test -v
