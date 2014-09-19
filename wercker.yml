@@ -1,9 +1,12 @@
 box: wercker/default
 
 build:
-    # The steps that will be executed on build
     steps:
-      # Test the project
+      - setup-go-workspace
+      - script:
+          name: build
+          code: |
+            go build
       - script:
           name: test
           code: |
