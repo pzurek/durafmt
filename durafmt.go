@@ -63,11 +63,11 @@ func WordsWithSeparator(duration time.Duration, sep string) string {
 
 	if duration.Hours() < 1 {
 		return fixSingular(d)
+	} else {
+		hours := fmt.Sprintf("%d", h)
+		d = fmt.Sprintf("%s hours%s %s minutes%s %s seconds", hours, sep, minutes, sep, seconds)
+		return fixSingular(d)
 	}
-
-	hours := fmt.Sprintf("%d", h)
-	d = fmt.Sprintf("%s hours%s %s minutes%s %s seconds", hours, sep, minutes, sep, seconds)
-	return fixSingular(d)
 }
 
 // Replacing all plural forms with signulars where needed
