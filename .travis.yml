@@ -7,10 +7,11 @@ go:
 before_install:
   - go get github.com/axw/gocov/gocov
   - go get github.com/mattn/goveralls
-  - pip install --user codecov
+
 script:
   - go test
   - $HOME/gopath/bin/goveralls -repotoken 9fQYRM6VveKxV1AF9nxJQswmrn0U9Zf4q
+  - go test -coverprofile=coverage.txt -covermode=atomic
+
 after_success:
   - bash <(curl -s https://codecov.io/bash)
-  - codecov
