@@ -14,10 +14,12 @@ before_install:
   - go get github.com/axw/gocov/gocov
   - go get github.com/mattn/goveralls
 
-script:
-  - go test
-  - $HOME/gopath/bin/goveralls -repotoken 9fQYRM6VveKxV1AF9nxJQswmrn0U9Zf4q
-  - go test -coverprofile=coverage.txt -covermode=atomic
+script
+  - $HOME/gopath/bin/goveralls -service=travis-ci
+
+#  - go test
+#  - $HOME/gopath/bin/goveralls -repotoken 9fQYRM6VveKxV1AF9nxJQswmrn0U9Zf4q
+#  - go test -coverprofile=coverage.txt -covermode=atomic
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
